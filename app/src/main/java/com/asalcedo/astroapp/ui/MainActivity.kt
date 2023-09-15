@@ -1,4 +1,4 @@
-package com.asalcedo.astroapp
+package com.asalcedo.astroapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
