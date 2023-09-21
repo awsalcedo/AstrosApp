@@ -7,7 +7,9 @@ import androidx.navigation.NavHost
 import androidx.navigation.ui.setupWithNavController
 import com.asalcedo.astroapp.R
 import com.asalcedo.astroapp.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

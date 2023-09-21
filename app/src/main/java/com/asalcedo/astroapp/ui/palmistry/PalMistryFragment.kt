@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.asalcedo.astroapp.databinding.FragmentPalMistryBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PalMistryFragment : Fragment() {
 
     private var _binding: FragmentPalMistryBinding? = null
