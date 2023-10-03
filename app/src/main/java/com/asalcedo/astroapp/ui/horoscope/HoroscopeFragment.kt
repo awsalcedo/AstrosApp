@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.asalcedo.astroapp.databinding.FragmentHoroscopeBinding
 import com.asalcedo.astroapp.ui.horoscope.adapter.HoroscopeAdapter
@@ -19,7 +20,7 @@ import kotlinx.coroutines.launch
 class HoroscopeFragment : Fragment() {
 
     private val horoscopeViewModel by viewModels<HoroscopeViewModel>()
-    private lateinit var adapter: HoroscopeAdapter
+    private lateinit var horoscopeAdapter: HoroscopeAdapter
 
     private var _binding: FragmentHoroscopeBinding? = null
     private val binding get() = _binding!!
@@ -42,10 +43,10 @@ class HoroscopeFragment : Fragment() {
     }
 
     private fun initList() {
-        adapter = HoroscopeAdapter()
+        horoscopeAdapter = HoroscopeAdapter()
         binding.rvHoroscope.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = adapter
+            layoutManager = GridLayoutManager(context,2)
+            adapter = horoscopeAdapter
         }
 
     }
@@ -54,7 +55,7 @@ class HoroscopeFragment : Fragment() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 horoscopeViewModel.horoscope.collect {
-
+                    horoscopeAdapter.updateList(it)
                 }
             }
         }

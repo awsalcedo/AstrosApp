@@ -25,4 +25,9 @@ class HoroscopeAdapter(private var horoscopeList: List<HoroscopeInfo> = emptyLis
     override fun onBindViewHolder(holder: HoroscopeViewHolder, position: Int) {
         holder.render(horoscopeList[position])
     }
+
+    fun updateList(list: List<HoroscopeInfo>) {
+        horoscopeList = list
+        notifyDataSetChanged()
+    }
 }
