@@ -10,9 +10,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.asalcedo.astroapp.databinding.FragmentHoroscopeBinding
+import com.asalcedo.astroapp.domain.model.HoroscopeInfo
+import com.asalcedo.astroapp.domain.model.HoroscopeModel
 import com.asalcedo.astroapp.ui.horoscope.adapter.HoroscopeAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -45,7 +48,25 @@ class HoroscopeFragment : Fragment() {
 
     private fun initList() {
         horoscopeAdapter = HoroscopeAdapter(onItemSelected = {
-            Toast.makeText(context, getString(it.name), Toast.LENGTH_SHORT).show()
+            val type = when (it) {
+                HoroscopeInfo.Aquarius -> HoroscopeModel.Aquarius
+                HoroscopeInfo.Aries -> HoroscopeModel.Aries
+                HoroscopeInfo.Cancer -> HoroscopeModel.Cancer
+                HoroscopeInfo.Capricorn -> HoroscopeModel.Capricorn
+                HoroscopeInfo.Gemninis -> HoroscopeModel.Gemini
+                HoroscopeInfo.Leo -> HoroscopeModel.Leo
+                HoroscopeInfo.Libra -> HoroscopeModel.Libra
+                HoroscopeInfo.Pisces -> HoroscopeModel.Pisces
+                HoroscopeInfo.Sagittarius -> HoroscopeModel.Sagittarius
+                HoroscopeInfo.Scorpio -> HoroscopeModel.Scorpio
+                HoroscopeInfo.Taurus -> HoroscopeModel.Taurus
+                HoroscopeInfo.Virgo -> HoroscopeModel.Virgo
+            }
+
+            // Navigate
+            findNavController().navigate(
+                HoroscopeFragmentDirections.actionHoroscopeFragmentToHoroscopeDetailActivity(type)
+            )
         })
         binding.rvHoroscope.apply {
             layoutManager = GridLayoutManager(context, 2)
