@@ -16,6 +16,9 @@
         android:theme="@style/Theme.AstroApp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.detail.HoroscopeDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.home.MainActivity"
             android:exported="true">
             <intent-filter>
