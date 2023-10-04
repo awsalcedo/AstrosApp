@@ -12,7 +12,10 @@ import com.asalcedo.astroapp.domain.model.HoroscopeInfo
  * Created by Alex Salcedo Silva on 25/9/23 at 20:22
  * All rights reserve 2022.
  ***/
-class HoroscopeAdapter(private var horoscopeList: List<HoroscopeInfo> = emptyList()) :
+class HoroscopeAdapter(
+    private var horoscopeList: List<HoroscopeInfo> = emptyList(),
+    private val onItemSelected: (HoroscopeInfo) -> Unit
+) :
     RecyclerView.Adapter<HoroscopeViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HoroscopeViewHolder {
         return HoroscopeViewHolder(
@@ -23,7 +26,7 @@ class HoroscopeAdapter(private var horoscopeList: List<HoroscopeInfo> = emptyLis
     override fun getItemCount() = horoscopeList.size
 
     override fun onBindViewHolder(holder: HoroscopeViewHolder, position: Int) {
-        holder.render(horoscopeList[position])
+        holder.render(horoscopeList[position], onItemSelected)
     }
 
     fun updateList(list: List<HoroscopeInfo>) {
