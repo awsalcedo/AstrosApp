@@ -1,6 +1,7 @@
 package com.asalcedo.astroapp.data.network
 
 import com.asalcedo.astroapp.data.RepositoryImpl
+import com.asalcedo.astroapp.data.core.interceptors.AuthInterceptor
 import com.asalcedo.astroapp.domain.Repository
 import dagger.Module
 import dagger.Provides
@@ -34,9 +35,10 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(authInterceptor: AuthInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .addInterceptor(authInterceptor)
             .build()
     }
 
