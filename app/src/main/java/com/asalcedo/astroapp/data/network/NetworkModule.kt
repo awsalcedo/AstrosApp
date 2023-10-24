@@ -1,5 +1,7 @@
 package com.asalcedo.astroapp.data.network
 
+import com.asalcedo.astroapp.data.RepositoryImpl
+import com.asalcedo.astroapp.domain.Repository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,5 +34,11 @@ object NetworkModule {
     @Singleton
     fun provideHoroscopeApiService(retrofit: Retrofit): HoroscopeApiService {
         return retrofit.create(HoroscopeApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideRepository(apiService: HoroscopeApiService): Repository {
+        return RepositoryImpl(apiService)
     }
 }
