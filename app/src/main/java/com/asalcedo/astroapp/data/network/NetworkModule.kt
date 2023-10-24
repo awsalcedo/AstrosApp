@@ -1,5 +1,6 @@
 package com.asalcedo.astroapp.data.network
 
+import com.asalcedo.astroapp.BuildConfig.BASE_URL
 import com.asalcedo.astroapp.data.RepositoryImpl
 import com.asalcedo.astroapp.data.core.interceptors.AuthInterceptor
 import com.asalcedo.astroapp.domain.Repository
@@ -21,7 +22,7 @@ object NetworkModule {
     @Provides
     @Singleton
     @Named("BaseUrl")
-    fun provideBaseUrl() = "https://newastro.vercel.app/"
+    fun provideBaseUrl() = BASE_URL
 
     @Provides
     @Singleton
