@@ -17,7 +17,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.asalcedo.astroapp.CustomTestRunner"
     }
 
     buildTypes {
@@ -58,6 +58,7 @@ android {
 
 dependencies {
 
+    implementation("androidx.test:core-ktx:1.5.0")
     val navVersion = "2.7.2"
     val cameraVersion = "1.3.0"
 
@@ -91,6 +92,13 @@ dependencies {
     testImplementation("io.kotlintest:kotlintest-runner-junit5:3.4.2")
     testImplementation("io.mockk:mockk:1.12.3")
 
+    //UI Testing
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.5.1")
+    androidTestImplementation("androidx.test.espresso:espresso-intents:3.5.1")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.48")
+    androidTestImplementation("androidx.fragment:fragment-testing:1.6.1")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.48")
+
 }
